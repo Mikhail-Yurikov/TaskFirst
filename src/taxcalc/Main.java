@@ -32,21 +32,23 @@ public class Main {
                         spendings += moneySpendings;
                         break;
                     case 3:
-                        if (taxEarningsMinusSpendings(earnings, spendings) > taxEarnings(earnings)) {
+                        int taxMinus = taxEarningsMinusSpendings(earnings, spendings);
+                        int taxEarnings = taxEarnings(earnings);
+                        if (taxMinus > taxEarnings) {
                             System.out.println("Мы советуем вам УСН доходы\n" +
-                                    "Ваш налог составит: " + taxEarnings(earnings) + " рублей\n" +
-                                    "Налог на другой системе: " + taxEarningsMinusSpendings(earnings, spendings) + " рублей\n" +
-                                    "Экономия: " + (taxEarningsMinusSpendings(earnings, spendings) - taxEarnings(earnings)) + " рублей");
+                                    "Ваш налог составит: " + taxEarnings + " рублей\n" +
+                                    "Налог на другой системе: " + taxMinus + " рублей\n" +
+                                    "Экономия: " + (taxMinus - taxEarnings) + " рублей");
                             break;
-                        } else if (taxEarningsMinusSpendings(earnings, spendings) == taxEarnings(earnings)) {
+                        } else if (taxMinus == taxEarnings) {
                             System.out.println("Вы можете выбрать любую систему налогообложения\n" +
-                                    "Ваш налог составит: " + taxEarnings(earnings) + " рублей");
+                                    "Ваш налог составит: " + taxEarnings + " рублей");
                             break;
                         } else {
                             System.out.println("Мы советуем вам УСН доходы минус расходы\n" +
-                                    "Ваш налог составит: " + taxEarningsMinusSpendings(earnings, spendings) + " рублей\n" +
-                                    "Налог на другой системе: " + taxEarnings(earnings) + " рублей\n" +
-                                    "Экономия: " + Math.abs((taxEarningsMinusSpendings(earnings, spendings) - taxEarnings(earnings))) + " рублей");
+                                    "Ваш налог составит: " + taxMinus + " рублей\n" +
+                                    "Налог на другой системе: " + taxEarnings + " рублей\n" +
+                                    "Экономия: " + (taxMinus - taxEarnings) + " рублей");
                             break;
                         }
                     default:
