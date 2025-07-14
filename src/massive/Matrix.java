@@ -7,18 +7,24 @@ public class Matrix {
     public static final int SIZE = 8;
 
     public static void main(String[] args) {
+        int[][] colors = createMatrix();
+        System.out.println("Исходная матрица");
+        showMatrix(colors);
         System.out.println("На сколько градусов вам перевернуть матрицу?");
         Scanner scanner = new Scanner(System.in);
         int degrees = scanner.nextInt();
         switch (degrees) {
             case 90:
-                turn90(createMatrix());
+                System.out.println("Перевернутая матрица");
+                showMatrix(turn90(colors));
                 break;
             case 180:
-                turn180(createMatrix());
+                System.out.println("Перевернутая матрица");
+                showMatrix(turn180(colors));
                 break;
             case 270:
-                turn270(createMatrix());
+                System.out.println("Перевернутая матрица");
+                showMatrix(turn270(colors));
                 break;
             default:
                 System.out.println("Так я не умею!");
@@ -50,45 +56,35 @@ public class Matrix {
     }
 
 
-    public static void turn90(int[][] colors) {
-        showMatrix(colors);
+    public static int[][] turn90(int[][] colors) {
         int[][] rotedColors = new int[SIZE][SIZE];
-        System.out.println("Перевернутая матрица:");
-        System.out.println();
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
                 rotedColors[i][j] = colors[SIZE - 1 - j][i];
-                System.out.format("%4d", rotedColors[i][j]);
             }
-            System.out.println();
         }
+        return rotedColors;
     }
 
-    public static void turn180(int[][] colors) {
-        showMatrix(colors);
+    public static int[][] turn180(int[][] colors) {
         int[][] rotedColors = new int[SIZE][SIZE];
-        System.out.println("Перевернутая матрица:");
-        System.out.println();
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
                 rotedColors[i][j] = colors[SIZE - 1 - i][SIZE - 1 - j];
-                System.out.format("%4d", rotedColors[i][j]);
             }
             System.out.println();
         }
+        return rotedColors;
     }
 
-    public static void turn270(int[][] colors) {
-        showMatrix(colors);
+    public static int[][] turn270(int[][] colors) {
         int[][] rotedColors = new int[SIZE][SIZE];
-        System.out.println("Перевернутая матрица:");
-        System.out.println();
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
                 rotedColors[i][j] = colors[j][SIZE - 1 - i];
-                System.out.format("%4d", rotedColors[i][j]);
             }
             System.out.println();
         }
+        return rotedColors;
     }
 }
