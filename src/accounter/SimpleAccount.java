@@ -3,7 +3,7 @@ package accounter;
 public class SimpleAccount extends Account {
 
     public SimpleAccount(long balance) {
-        super(balance);
+        setBalance(balance);
     }
 
     @Override
